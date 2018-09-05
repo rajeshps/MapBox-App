@@ -2,16 +2,17 @@ import React, { Component } from 'react';
 import { Platform, View, StyleSheet } from 'react-native';
 import Mapbox from '@mapbox/react-native-mapbox-gl';
 
-Mapbox.setAccessToken(
-  'pk.eyJ1IjoiYWRpdHlhMjAwMCIsImEiOiJjamxkcnMzdDgwZGFiM3Byb3p3dzN5bmN4In0.VXYqWSeRUDiab64DxZu_iQ'
-);
+Mapbox.setAccessToken('pk.eyJ1IjoiYWRpdHlhMjAwMCIsImEiOiJjamxkcnMzdDgwZGFiM3Byb3p3dzN5bmN4In0.VXYqWSeRUDiab64DxZu_iQ');
 
 const IS_ANDROID = Platform.OS === 'android';
 
 export default class App extends Component {
   constructor(props, context) {
     super(props, context);
-    this.state = {};
+    this.state = {
+      isFetchingAndroidPermission: IS_ANDROID,
+      isAndroidPermissionGranted: false
+    };
   }
 
   async componentWillMount() {
